@@ -1,0 +1,3 @@
+# Don't touch docker compose configuration files (yaml)
+*compose*.yaml
+*compose*.yml

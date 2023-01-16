@@ -1,0 +1,8 @@
+{
+    "recommendations": [
+        "ms-vscode.cpptools-extension-pack",
+        "jbenden.c-cpp-flylint",
+        "hars.CppSnippets",
+        "ms-vscode.makefile-tools"
+    ]
+}

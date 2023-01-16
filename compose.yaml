@@ -1,0 +1,11 @@
+name: cppner
+services:
+  app:
+    build:
+      context: .
+      args:
+        - PROJECT_NAME=${PROJECT_NAME}
+        - CMAKE_VERSION=${CMAKE_VERSION}
+        - buildpath=${buildpath}
+    environment:
+      - PROJECT_NAME=${PROJECT_NAME}

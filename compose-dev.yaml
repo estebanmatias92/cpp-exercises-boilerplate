@@ -1,0 +1,7 @@
+name: cppner
+services:
+  app:
+    build:
+      context: .
+      target: development
+    env_file: .env
