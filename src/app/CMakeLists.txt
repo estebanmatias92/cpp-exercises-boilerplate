@@ -6,8 +6,7 @@ add_library(${libname} SHARED)
 
 # Link the libraries for this Target
 target_link_libraries(${libname}
-    PUBLIC tools
-           external)
+    PUBLIC exercises)
 
 # Link the include path to this target
 target_include_directories(${libname} PUBLIC ${CMAKE_SOURCE_DIR}/include/${libname})
