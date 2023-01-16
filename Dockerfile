@@ -43,9 +43,9 @@ RUN useradd -s /bin/bash -m $USER \
     && usermod -aG docker $USER
 USER $USER
 # Get the build script commands added to the shell session
-COPY --chown=$USER *.sh $WORKDIR/
-RUN echo "\n# Add script for building\n. ${WORKDIR}/script.sh" >> $HOME/.bashrc \
-    chmod a+x ${WORKDIR}/*.sh
+COPY --chown=$USER script.sh $WORKDIR/
+RUN echo "\n# Add script for building\n. ${WORKDIR}/script.sh" >> $HOME/.bashrc
+
 # Keep the container alive
 CMD ["sleep", "infinity"]
 
