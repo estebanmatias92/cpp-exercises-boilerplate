@@ -16,29 +16,31 @@ using namespace e92;
 namespace app
 {
     void ShowTitle();
-    void ShowOptions(const vector<int> &);
-    int SelectOption(Exercise &);
-    void LaunchExercise(Exercise &);
+    void ShowOptions(vector<void (*)()> &);
 
     void run()
     {
-        bool repeat = true;
-
         do
         {
             system("clear"); // Clear screen
 
-            Exercise exercise_obj; // Initialize the exercises
+            Exercise exercise; // Initialize the exercises
 
             ShowTitle();
-            ShowOptions(exercise_obj.getAll());
+            ShowOptions(exercise.mList);
 
-            int option; // Input option
             try
             {
+                int option = 0; // Input option
                 cout << "Enter an option: ";
-                option = SelectOption(exercise_obj);
+                cin >> option;
+                cin.ignore();
                 cout << endl;
+
+                if (option == 0)
+                    break;
+
+                exercise.Launch(option); // Launch selected exercise
             }
             catch (const char *msg)
             {
@@ -48,20 +50,12 @@ namespace app
                 continue;            // Jump to the next iteration
             }
 
-            if (option == 0) // Get out if the option is zwro
-            {
-                repeat = false;
-                break;
-            }
-
-            LaunchExercise(exercise_obj); // Launch selected exercise
-
             // Pause flow
             cout << endl
                  << "Enter to main screen... ";
             getchar();
 
-        } while (repeat);
+        } while (true);
     }
 
     /*
@@ -81,40 +75,15 @@ namespace app
     /*
         Print the options from the exercise objects available
     */
-    void ShowOptions(const vector<int> &list_exercises)
+    void ShowOptions(vector<void (*)()> &exercises)
     {
-        int last = list_exercises.back(); // Get last exercise
-
+        int size = exercises.size();
         cout << "Exercises: [";
-        for (const auto &i : list_exercises)
-            cout << i << ((i != last) ? ", " : "]\n"); // Show each item with colons
+        for (int i = 1; i <= size; i++)
+            cout << i << ((i != size) ? ", " : "]\n"); // Show each item with colons
 
         cout << "Exit: (0)" << endl // Show exit option
              << endl;
     }
 
-    /*
-        Take the object exercise and take user input and return the option entered
-    */
-    int SelectOption(Exercise &exercise)
-    {
-        size_t option;
-        cin >> option;
-        cin.ignore();
-
-        if (option == 0)
-            return option;
-
-        exercise.Select(option);
-
-        return option;
-    }
-
-    /*
-        Take the object exercise and Launch the exercise function
-    */
-    void LaunchExercise(Exercise &exercise)
-    {
-        exercise.Launch();
-    }
 }

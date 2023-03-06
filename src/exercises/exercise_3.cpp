@@ -3,12 +3,7 @@
 
 using namespace std;
 
-struct export_exercise
+void exercise_3()
 {
-    void (*call)(void);
-};
-struct export_exercise exercise_3 = {
-    []()
-    {
-        cout << "I am exercise 3" << endl;
-    }};
+    cout << "Hola desde ejercicio tres" << endl;
+}
