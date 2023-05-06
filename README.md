@@ -6,7 +6,7 @@ You can change the **project_name** and the **cmake_version** in the .env file a
 
 ## Use
 
-There are three main stages, _Builder_, _Development_ and _Production_. (see [Dockerfile](https://github.com/estebanmatias92/vanilla-cppner-boilerplate/blob/main/Dockerfile))<br/>
+There are three main stages, _Builder_, _Development_ and _Production_. (see [Dockerfile](https://github.com/estebanmatias92/cpp-exercises-boilerplate/blob/main/Dockerfile))<br/>
 **Builder:** is used to compile the source files and it is used by other stages/images.<br/>
 **Development:** is used to set the dev dependencies and system user for the IDE.<br/>
 **Production:** is a slim version of debian that pulls the binaries and can only run the executable.
@@ -21,7 +21,7 @@ _`docker compose run --rm app`_
 
 ### Inside the dev-environment
 
-The _Development_ stage is where the build script ([build.sh](https://github.com/estebanmatias92/vanilla-cppner-boilerplate/blob/main/build.sh)) is sourced, so only from that stage you can use the next commands, and they are sourced by **$HOME/.bashrc** so only **bash** shell (not sh) have them available.
+All the bash scripts for dev workflow ([script.sh](https://github.com/estebanmatias92/cpp-exercises-boilerplate/blob/main/script.sh), [install.sh](https://github.com/estebanmatias92/cpp-exercises-boilerplate/blob/main/install.sh) and [build.sh](https://github.com/estebanmatias92/cpp-exercises-boilerplate/blob/main/build.sh)) are source with **$HOME/.bashrc** in the _Development_ stage ([Dockerfile](https://github.com/estebanmatias92/cpp-exercises-boilerplate/blob/main/Dockerfile)).
 
 **Compile and run within the C/C++ environment:**
 
