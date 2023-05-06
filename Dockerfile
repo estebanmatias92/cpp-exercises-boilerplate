@@ -44,8 +44,9 @@ RUN useradd -s /bin/bash -m $USER \
 USER $USER
 # Get the build script commands added to the shell session
 COPY --chown=$USER script.sh $WORKDIR/
-RUN echo "\n# Add script for building\n. ${WORKDIR}/script.sh" >> $HOME/.bashrc
-
+RUN echo "\n# Add script for building\n. ${WORKDIR}/script.sh" >> $HOME/.bashrc \
+# Replace the host SSH exe with the WSL distro SSH exe
+RUN git config --global --replace-all core.sshCommand "/usr/bin/ssh"
 # Keep the container alive
 CMD ["sleep", "infinity"]
 
